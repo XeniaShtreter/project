@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Редактирование фотографии: {{ photo.title }}{% endblock %}
+
+{% block main %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ photo.image.url }}" alt="{{ photo.title }}" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="photoTitle">Название</label>
+                        <input type="text" class="form-control" id="photoTitle" name="title" value="{{ photo.title }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="photoDescription">Описание</label>
+                        <textarea class="form-control" id="photoDescription" name="description" required>{{ photo.description }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="tags">Теги (разделите теги пробелами)</label>
+                        <input type="text" class="form-control" id="tags" name="tags" value="{% for tag in photo.tags.all %}{{ tag.name }}{% if not forloop.last %} {% endif %}{% endfor %}" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

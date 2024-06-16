@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Все фотографии пользователя{% endblock %}
+
+{% block main %}
+    <style>
+        .photo-card {
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo-image {
+            height: 150px; /* уменьшаем высоту фото */
+            object-fit: cover;
+            /* убираем скругленные углы */
+        }
+    </style>
+    <div class="container my-5">
+        <div class="d-flex justify-content-end mb-4">
+            <div class="btn-group" role="group" aria-label="Sorting buttons">
+                <a href="?sort=status&status=PENDING" class="btn btn-outline-secondary">В ожидании</a>
+                <a href="?sort=status&status=APPROVED" class="btn btn-outline-secondary">Одобрено</a>
+                <a href="?sort=status&status=DISAPPROVED" class="btn btn-outline-secondary">Отклонено</a>
+            </div>
+        </div>
+        <div class="row">
+            {% for photo in photos %}
+                <div class="col-md-3 mb-4"> <!-- уменьшаем ширину фото -->
+                    <a href="{% url 'photo_detail' photo.id %}">
+                        <div class="card photo-card">
+                            <img src="{{ photo.image.url }}" alt="{{ photo.title }}" class="photo-image card-img-top">
+                        </div>
+                    </a>
+                </div>
+            {% empty %}
+            <h5>Вы еще не загружали фотографии :(</h5>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

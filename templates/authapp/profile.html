@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Профиль - {{ user.username }}{% endblock %}
+
+{% block main %}
+    <style>
+        .profile-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .profile-details {
+            margin-left: 20px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .fixed-size-mini-img-container {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+        }
+
+        .fixed-size-mini-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    </style>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="profile-container">
+                    <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
+                    <div class="profile-details">
+                        <h2>{{ user.username }}</h2>
+                        <p>{{ user.profile.bio }}</p>
+                        <a href="{% url 'edit_profile' %}" class="btn btn-primary">Редактировать профиль</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5">Галерея</h3>
+        <div class="row mt-3">
+            {% for photo in user.photos.all %}
+                <div class="col-md-4">
+                    <a href="{% url 'photo_detail' photo.id %}">
+                        <div class="card card-photo mb-3">
+                            <div class="fixed-size-mini-img-container">
+                                <img src="{{ photo.image.url }}" alt="{{ photo.title }}" class="card-img-top  fixed-size-mini-img">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <h3>Публикация фотографии</h3>
+        <form method="post" enctype="multipart/form-data" action="{% url 'photo_upload' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="photoTitle">Название</label>
+                <input type="text" class="form-control" id="photoTitle" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="photoDescription">Описание</label>
+                <textarea class="form-control" id="photoDescription" name="description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="photoImage">Фотография</label>
+                <input type="file" class="form-control-file" id="photoImage" name="image" required>
+            </div>
+            <div class="form-group">
+                <label for="photoTags">Теги (разделите теги пробелами)</label>
+                <input type="text" class="form-control" id="photoTags" name="tags" placeholder="Например: природа зима красота">
+            </div>
+            <button type="submit" class="btn btn-primary">Опубликовать</button>
+        </form>
+
+        <h3 class="mt-5">Статистика</h3>
+        <div class="row mt-3 text-center">
+            <div class="col-md-12">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">За все время</h5>
+                        <p class="card-text">{{ user.photos.count }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">За неделю</h5>
+                        <p class="card-text">{{ photos_uploaded_this_week }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">За месяц</h5>
+                        <p class="card-text">{{ photos_uploaded_this_month }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">За год</h5>
+                        <p class="card-text">{{ photos_uploaded_this_year }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

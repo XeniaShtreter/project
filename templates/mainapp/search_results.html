@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Результаты поиска{% endblock %}
+
+{% block main %}
+    <div class="main container">
+        <h2>Результаты поиска</h2>
+        <div class="gallery row">
+            {% for photo in photos %}
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <a href="{% url 'photo_detail' photo.id %}" class="card-link">
+                        <div class="photo card card-photo">
+                            <img src="{{ photo.image.url }}" class="card-img-top fixed-size-img" alt="{{ photo.title }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ photo.title }}</h5>
+                                <p class="card-text">{{ photo.user }}</p>
+                                <div class="tags mt-3">
+                                    {% for tag in photo.tags.all %}
+                                        <a href="{% url 'photo_list' tag.name %}" class="badge badge-light">{{ tag.name }}</a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

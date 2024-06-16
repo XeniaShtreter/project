@@ -1,0 +1,310 @@
+/* Общие стили для всего документа */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Monseratt', sans-serif; /* Шрифт */
+    background-color: #ffffff; /* Цвет фона */
+}
+
+/* Стили для заголовка */
+header {
+    background-color: #262b2b; /* Фон */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень */
+    position: relative; /* Позиционирование */
+    z-index: 1; /* Z-index */
+}
+
+/* Основные стили для блока main */
+.main {
+    margin-top: 20px; /* Добавленный отступ сверху */
+}
+
+/* Стили для ссылок */
+a {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: inherit; /* Наследуем цвет */
+}
+
+/* Стили для ссылок при наведении */
+a:hover {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: inherit; /* Наследуем цвет */
+}
+
+/* Стили для баннера */
+.banner {
+    width: 100%; /* Ширина */
+    height: 200px; /* Высота */
+}
+
+.banner img {
+    width: 100%; /* Ширина изображения */
+    height: 100%; /* Высота изображения */
+    object-fit: cover; /* Заполнение контейнера */
+}
+
+/* Стили для навигации */
+nav {
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+nav a {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: #ffffff; /* Цвет текста */
+    font-size: 18px; /* Размер шрифта */
+    margin: 0 15px; /* Отступы */
+}
+
+/* Стили для боковой панели */
+.sidebar {
+    background-color: #ffffff; /* Светлый фон */
+    border-radius: 0.25rem; /* Закругленные углы */
+    padding: 1rem; /* Внутренние отступы */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Тень */
+}
+
+.sidebar h2 {
+    font-size: 1.25rem; /* Размер шрифта заголовка */
+    margin-bottom: 1rem; /* Отступ снизу */
+    color: #343a40; /* Цвет текста */
+}
+
+.sidebar form {
+    margin-bottom: 1.5rem; /* Отступ снизу */
+}
+
+.sidebar form label {
+    font-weight: 500; /* Полужирный текст */
+    color: #495057; /* Цвет текста */
+}
+
+.sidebar form input[type="text"],
+.sidebar form input[type="password"] {
+    border: 1px solid #ced4da; /* Граница */
+    border-radius: 0.25rem; /* Закругленные углы */
+    padding: 0.5rem; /* Внутренние отступы */
+    width: 100%; /* Ширина 100% */
+    box-sizing: border-box; /* Включаем бордер в ширину */
+}
+
+.sidebar form button[type="submit"] {
+    background-color: #262b2b; /* Темный цвет фона */
+    color: #ffffff; /* Цвет текста */
+    border: none; /* Убираем границу */
+    padding: 0.5rem 1rem; /* Внутренние отступы */
+    border-radius: 0.25rem; /* Закругленные углы */
+    cursor: pointer; /* Указатель курсора */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Плавный переход цвета фона и текста */
+}
+
+.sidebar form button[type="submit"]:hover {
+    background-color: #ffffff; /* Цвет фона при наведении */
+    color: #262b2b; /* Цвет текста */
+}
+
+/* Стили для кнопки primary */
+.btn-primary {
+    background-color: #262b2b; /* Фон кнопки */
+    color: #ffffff; /* Цвет текста */
+    border-color: #262b2b; /* Цвет рамки */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Плавный переход цвета фона и текста */
+}
+
+.btn-primary:hover {
+    background-color: #ffffff; /* Цвет фона при наведении */
+    color: #262b2b; /* Цвет текста */
+}
+
+.sidebar ul {
+    padding-left: 0; /* Убираем отступы слева */
+    list-style-type: none; /* Убираем маркеры списка */
+}
+
+.sidebar ul li {
+    margin-bottom: 0.5rem; /* Отступ снизу */
+}
+
+.sidebar ul li a {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: #262b2b; /* Темный цвет текста */
+    transition: color 0.3s ease; /* Плавный переход цвета текста */
+}
+
+.sidebar ul li a:hover {
+    color: #e66a00; /* Цвет текста при наведении */
+}
+
+/* Стили для контента */
+.content {
+    background-color: #ffffff; /* Фон */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень */
+    padding: 20px; /* Внутренние отступы */
+    border-radius: 5px; /* Закругленные углы */
+}
+
+/* Стили для карточек статей и продуктов */
+.article-card, .product-card {
+    border: 1px solid #ddd; /* Граница */
+    border-radius: 5px; /* Закругленные углы */
+    overflow: hidden; /* Скрытие части содержимого */
+    margin-bottom: 20px; /* Отступ снизу */
+    display: flex; /* Отображение в строку */
+    padding: 15px; /* Внутренние отступы */
+    transition: transform 0.3s ease; /* Плавное изменение */
+}
+
+.article-card:hover, .product-card:hover {
+    transform: translateY(-10px); /* Поднятие при наведении */
+}
+
+.article-card img, .slideshow-image {
+    width: 30%; /* Ширина изображения */
+    object-fit: cover; /* Заполнение */
+}
+
+.article-details {
+    padding: 15px; /* Внутренние отступы */
+    width: 70%; /* Ширина */
+}
+
+.article-details h3 {
+    margin-top: 0; /* Отступ сверху */
+}
+
+.article-details button, .main-content .btn, button {
+    background-color: #262b2b; /* Цвет фона */
+    color: #ffffff; /* Цвет текста */
+    border: none; /* Граница */
+    padding: 10px 20px; /* Внутренние отступы */
+    border-radius: 5px; /* Закругленные углы */
+    cursor: pointer; /* Переключатель курсора */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Плавный переход цвета фона и текста */
+}
+
+.article-details button:hover, .main-content .btn:hover, button:hover {
+    background-color: #ffffff; /* Цвет фона при наведении */
+    color: #262b2b; /* Цвет текста */
+}
+
+/* Стили для пагинации */
+.pagination {
+    text-align: center; /* Выравнивание по центру */
+}
+
+/* Стили для пагинации */
+.pagination .step-links a,
+.pagination .step-links span {
+    margin: 0 5px; /* Отступы между элементами */
+    padding: 5px 10px; /* Внутренние отступы */
+    text-decoration: none; /* Убираем подчеркивание */
+    color: #333; /* Цвет текста */
+}
+
+.pagination .step-links .current {
+    font-weight: bold; /* Жирный текст для текущей страницы */
+}
+
+/* Стили для подвала */
+footer {
+    background-color: #262b2b; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+    text-align: center; /* Выравнивание по центру */
+    padding: 30px 0; /* Внутренние отступы сверху и снизу */
+    margin-top: 20px; /* Отступ сверху */
+    position: relative; /* Позиционирование */
+    bottom: 0; /* Прижимаем к нижнему краю */
+    width: 100%; /* Ширина на всю ширину экрана */
+}
+
+/* Стили для основного контента */
+.main-content {
+    background-color: #ffffff; /* Фон */
+    padding: 20px; /* Внутренние отступы */
+    border-radius: 5px; /* Закругленные углы */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+.main-content h1.display-4 {
+    font-size: 2.5rem; /* Размер заголовка */
+    font-weight: 300; /* Толщина шрифта */
+}
+
+.main-content p {
+    font-size: 1rem; /* Размер текста */
+    line-height: 1.5; /* Межстрочный интервал */
+}
+
+.main-content hr {
+    border-top: 1px solid #ddd; /* Горизонтальная линия */
+}
+
+
+/* Стили для модальных окон */
+.modal-header,
+.modal-footer {
+    border-bottom: 1px solid #ddd; /* Граница снизу */
+    border-top: 1px solid #ddd; /* Граница сверху */
+}
+
+/* Стили для карточек */
+.card {
+    border: 1px solid #ddd; /* Граница */
+    border-radius: 5px; /* Закругленные углы */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Тень */
+    transition: transform 0.3s ease; /* Плавное изменение */
+    overflow: hidden; /* Переполнение скрытых элементов */
+}
+
+.card-photo:hover {
+    transform: translateY(-10px); /* Поднятие карточки при наведении */
+}
+
+.card-photo:active {
+    transform: translateY(-20px); /* Еще большее поднятие при активации */
+}
+
+/* Убираем подчеркивание и наследуем цвет ссылок */
+.card-link {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: inherit; /* Наследуем цвет текста */
+}
+
+/* Фиксированная высота с масштабированием изображения */
+.fixed-size-img {
+    width: 100%; /* Ширина на всю ширину контейнера */
+    height: 200px; /* Фиксированная высота */
+    object-fit: cover; /* Масштабирование изображения */
+}
+
+/* Секция профиля, плавающий элемент влево */
+.profile-section {
+    float: left; /* Плавающий элемент влево */
+    width: 33.33%; /* Ширина блока */
+    padding: 20px; /* Внутренние отступы */
+}
+
+/* Секция слайдшоу, плавающий элемент вправо */
+.slideshow-section {
+    float: right; /* Плавающий элемент вправо */
+    width: 66.66%; /* Ширина блока */
+    padding: 20px; /* Внутренние отступы */
+}
+
+/* Отступ сверху для контентной секции */
+.content-section {
+    margin-top: 50px; /* Отступ сверху для контентной секции */
+}
+
+/* Стили для тегов */
+.badge {
+    padding: 0.4em 0.8em; /* Внутренние отступы */
+    border-radius: 5px; /* Закругленные углы */
+    background-color: #e9ecef; /* Цвет фона */
+    color: #6c757d; /* Цвет текста */
+    text-decoration: none; /* Убираем подчеркивание */
+    font-size: 0.8rem; /* Размер текста */
+}
+
+.badge:hover {
+    background-color: #262b2b; /* Цвет фона при наведении */
+}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}DemoStock{% endblock %}
+
+{% block main %}
+    <div class="main container">
+        <div class="gallery row">
+            {% for photo in photos %}
+                <div class="col-md-4 mb-4">
+                    <div class="card-link">
+                        <div class="photo card">
+                            <img src="{{ photo.image.url }}" class="card-img-top fixed-size-img" alt="{{ photo.title }}">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <form method="post" action="{% url 'approve_photo' photo.id %}" class="d-inline">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-success btn-sm">✔️</button>
+                                    </form>
+                                    <form method="post" action="{% url 'disapprove_photo' photo.id %}" class="d-inline">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger btn-sm">❌</button>
+                                    </form>
+                                </div>
+                                <h5 class="card-title mt-3">{{ photo.title }}</h5>
+                                <p class="card-text">{{ photo.description|truncatewords:20 }}</p>
+                                <p class="card-text"><small class="text-muted">Опубликовано: {{ photo.upload_date }}</small></p>
+                                <div class="tags mt-3">
+                                    {% for tag in photo.tags.all %}
+                                        <a href="{% url 'photo_list' tag.name %}" class="badge badge-light">{{ tag.name }}</a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

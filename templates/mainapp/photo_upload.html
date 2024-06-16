@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Photo Upload{% endblock %}
+{% block main %}
+    <div class="container mt-5">
+        <h3 class="mb-4">Загрузить фоторафию</h3>
+        <form method="post" enctype="multipart/form-data" action="{% url 'photo_upload' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="photoTitle">Название</label>
+                <input type="text" class="form-control" id="photoTitle" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="photoDescription">Описание</label>
+                <textarea class="form-control" id="photoDescription" name="description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="tags">Теги</label>
+                <input type="text" class="form-control" id="tags" name="tags" required>
+            </div>
+            <div class="form-group">
+                <label for="photoImage">Фотография</label>
+                <input type="file" class="form-control-file" id="photoImage" name="image" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Опубликовать</button>
+        </form>
+    </div>
+{% endblock %}
