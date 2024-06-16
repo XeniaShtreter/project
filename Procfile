@@ -1,1 +1,1 @@
-web: gunicorn DemoStock.wsgi
+web: gunicorn PhotoStock.wsgi:application
